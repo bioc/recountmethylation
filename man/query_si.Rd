@@ -30,9 +30,6 @@ dict files (required, char).}
 \item{lkval}{Vector of K nearest neighbors to return per query (optional, 
 int, c(1,2)).}
 }
-\value{
-
-}
 \description{
 Query an HNSW search index. Does K Nearest Neighbors lookup on a previously 
 saved search index object, returning the K nearest neighbors of the queried 
