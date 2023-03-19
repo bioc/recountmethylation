@@ -198,8 +198,9 @@ get_rmdl <- function(which.class = c("rg", "gm", "gr", "test"),
 #' @title Access database files.
 #'
 #' @description Combines download and load functions for databases. 
-#' If the "namematch" argument isn't provided, the latest available 
-#' file is downloaded. All files include metadata for the available samples.
+#' If the "namematch" argument to search for a local database file isn't 
+#' provided, the latest available file is downloaded from the server. 
+#' All files include metadata for the available samples.
 #' 
 #' There are 6 functions. Functions with "h5se" access 
 #' HDF5-SummarizedExperiment files, and "h5" functions access HDF5 databases. 
@@ -210,8 +211,8 @@ get_rmdl <- function(which.class = c("rg", "gm", "gr", "test"),
 #' 
 #' @param platform Valid supported DNAm array platform type. Currently either
 #' "epic" for EPIC/HM850K, or "hm450k" for HM450K.
-#' @param namematch Filename pattern to match when searching for database 
-#' (see defaults).
+#' @param namematch Pattern of the file name to match when looking for a database 
+#' file locally (see defaults).
 #' @param dfp Folder to search for database file 
 #' (optional, if NULL then searches cache dir specified by BiocFileCache).
 #' @param verbose Whether to return verbose messages (default FALSE).
