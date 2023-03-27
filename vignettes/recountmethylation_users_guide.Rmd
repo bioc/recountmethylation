@@ -48,13 +48,33 @@ crucial background about the platforms and datatypes, and runnable examples usin
 2 small example files. Additional info and more advanced analysis examples are
 contained in other package vignettes.
 
+## Compilation releases
+
+The `recountmethylation` resource now includes three compilation versions, 
+detailed in the table below. The initial versions only included samples run 
+using the HM450K platform, while newer versions also included samples run using
+the EPIC platform. These compilations currently include 93,306 samples run on the HM450K 
+platform, 38,122 samples run on the EPIC platform, and 131,428 total samples.
+
+```{r}
+dft <- data.frame(release = c("first", "second", "third", "total"),
+                  version.label = c("0.0.1", "0.0.2", "0.0.3", "all"),
+                  date = c("11/20/2020", "01/06/2021", "12/21/2022", "12/21/2022"),
+                  hm450k.samples = c(35360, 50400, 7546, 
+                                     sum(c(35360, 50400, 7546))),
+                  epic.samples = c(0, 12650, 25472, 
+                                   sum(c(0, 12650, 25472))))
+dft$combined.samples <- dft$hm450k.samples + dft$epic.samples
+knitr::kable(dft, align = "c")
+```
+
 ## Database files and access
 
 Database compilation file download and access is managed by the `get_db` 
 functions, where the DNAm array platform type using the `platform` argument
 (see `?get_db` for details). Both HM450K and EPIC/HM850K platforms are 
 currently supported (see below for platform details). Note you will need 
-up to 193 Gb of disk space to store a single database file. Files pair 
+between 50-180 Gb of disk space to store a single database file. Files pair 
 sample metadata and assay data in various formats, including `HDF5-SummarizedExperiment` 
 database directories, and `HDF5` database files with the `.h5` extension. 
 
@@ -63,16 +83,7 @@ The databases are located at
 and file details are viewable as follows:
 
 ```{r, echo = TRUE, message = TRUE}
-sm <- as.data.frame(get_servermatrix())
-sm$version <- ifelse(grepl("0-0-1", sm$filename), "v0.0.1",
-                     ifelse(grepl("0-0-2", sm$filename), "v0.0.2",
-                            ifelse(grepl("0-0-3", sm$filename), "v0.0.3", "NA")))
-sm$`size (bytes)` <- unlist(lapply(sm$`size (bytes)`, function(si){
-  val <- unlist(strsplit(si, ";"))
-  val <- paste0(round(as.numeric(gsub(".* = ", "", val[1]))/1e9,2), "Gb")
-  val
-}))
-sm <- sm[rev(order(sm$version)),]
+sm <- as.data.frame(smfilt(get_servermatrix()))
 if(is(sm, "data.frame")){knitr::kable(sm, align = "c")}
 ```
 

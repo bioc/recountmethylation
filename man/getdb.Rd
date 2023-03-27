@@ -59,8 +59,8 @@ getdb_h5_rg(
 \item{dfp}{Folder to search for database file 
 (optional, if NULL then searches cache dir specified by BiocFileCache).}
 
-\item{namematch}{Pattern of the file name to match when looking for a database 
-file locally (see defaults).}
+\item{namematch}{Filename pattern to match when searching for database 
+(see defaults).}
 
 \item{verbose}{Whether to return verbose messages (default FALSE).}
 }
@@ -70,9 +70,8 @@ path for h5 functions.
 }
 \description{
 Combines download and load functions for databases. 
-If the "namematch" argument to search for a local database file isn't 
-provided, the latest available file is downloaded from the server. 
-All files include metadata for the available samples.
+If the "namematch" argument isn't provided, the latest available 
+file is downloaded. All files include metadata for the available samples.
 
 There are 6 functions. Functions with "h5se" access 
 HDF5-SummarizedExperiment files, and "h5" functions access HDF5 databases. 

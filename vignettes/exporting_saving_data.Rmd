@@ -32,7 +32,7 @@ discussion of DNAm data types and storage formats can be found in the
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 libv <- c("minfiData", "HDF5Array", "minfi")
-sapply(libv, library, character.only = T)
+sapply(libv, library, character.only = TRUE)
 ```
 
 # Obtaining example data
@@ -123,12 +123,7 @@ The compiled DNAm array data in `recountmethylation` covers three formats (`rg`,
 users will want to use the `DelayedArray`-backed object formats. These appear as
 directories with `h5se` in their name containing a large assays file and a smaller
 metadata file. Users of Python and other programming languages besides R will 
-likely prefer to use the HDF5 database files, which have `h5` in their names. 
-
-You may find the following decision tree diagram helpful if you are uncertain about
-what data type or storage format will be most useful to you:
-
-![](data-decision-tree.png)
+likely prefer to use the HDF5 database files, which have `h5` in their names.
 
 # Saving data
 
@@ -148,7 +143,7 @@ tissue type, disease condition, and more.
 
 We can extract the individual flat files and save these as R binary files as follows:
 
-```{r, eval = F}
+```{r, eval = FALSE}
 # get flat files
 m.beta <- getBeta(gr.h5se)
 anno <- as.data.frame(getAnnotation(gr.h5se))
@@ -162,7 +157,7 @@ save(coldata, file = "coldata_new.rda")
 To instead write flat files to new tables such as `.csv` files, we can use one of
 the following:
 
-```{r, eval = F}
+```{r, eval = FALSE}
 write.table(m.beta, file = "mbeta_new.txt")
 write.csv(m.beta, file = "mbeta_new.csv")
 data.table::fwrite(m.beta, file = "mbeta_new.txt")
@@ -181,7 +176,7 @@ when working with the `recountmethylation` data compilations.
 Standard matrix-backed `SummarizedExperiment` objects, such as `RGChannelSets`, 
 `MethylSets`, and `GenomicRatioSets`, can all be saved like standard R objects.
 
-```{r, eval = F}
+```{r, eval = FALSE}
 save(rg, file = "rg_new.rda")
 save(gm, file = "gm_new.rda")
 save(gr, file = "gr_new.rda")

@@ -1,10 +1,8 @@
 ---
-title: "recountmethylation User's Guide"
+title: "Practical uses for provided CpG probe annotations"
 author:
 - Sean K. Maden
 date: "`r format(Sys.time(), '%d %B, %Y')`"
-bibliography: bibliography.bib
-csl: cell-numeric.csl
 package: recountmethylation
 output:
   BiocStyle::html_document:
@@ -12,10 +10,9 @@ output:
     toc: no
     tocfloat: no
   BiocStyle::pdf_document: 
-    toc: yes
-    toc_depth: 2
+    toc: no
 vignette: > 
-  %\VignetteIndexEntry{Practical CpG probe annotation usages}
+  %\VignetteIndexEntry{Practical uses for CpG annotations}
   %\VignetteDepends{RCurl}
   %\usepackage[UTF-8]{inputenc} 
   %\VignetteEncoding{UTF-8}
@@ -30,7 +27,7 @@ platform-specific manifests. These examples are shown for an example
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 libv <- c("minfi", "minfiData", "minfiDataEPIC", "ggplot2")
-sapply(libv, library, character.only = T)
+sapply(libv, library, character.only = TRUE)
 ```
 
 # Probe manifest background
@@ -235,7 +232,7 @@ Since the manifest is transcript-centric, you will find that some probes map to
 the promoter of one transcript and the body of another transcript. You can view
 these as follows:
 
-```{r}
+```{r, eval = FALSE}
 dfp <- as.data.frame(table(man$gene_body, man$promoter))
 dfp$region <- c("intergenic", "body-only", "promoter-only", "body-and-promoter")
 ggplot(dfp, aes(x = region, y = Freq, fill = region)) + theme_bw() +
@@ -271,7 +268,7 @@ regions. These are 2-4kbp-wide regions flanking CG Islands and their shores.
 We can plot the frequency of relative CG Island locations across HM450K array
 probes as follows:
 
-```{r}
+```{r, eval = FALSE}
 dfp <- as.data.frame(table(man$Relation_to_Island))
 ggplot(dfp, aes(x = Var1, y = Freq, fill = Var1)) + theme_bw() +
   geom_bar(stat = "identity") + xlab("Relation_to_Island") + ylab("Num. probes") +
