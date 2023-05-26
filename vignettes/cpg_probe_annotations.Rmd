@@ -127,8 +127,8 @@ probes have been uploaded [here](https://github.com/metamaden/methyPre/tree/mast
 * Pidsley et al 2016 cross-reactive EPIC probes ([source](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-1066-1)).
 Note, these probes have also been uploaded [here](https://github.com/metamaden/methyPre/tree/master/data).
 
-We can filter out lists of probe CpG IDs (e.g. `cg00050873`) by subsetting on the
-`Name` column in the manifest.
+Access lists of cross-reactive probes with the `recountmethylation` function 
+using `get_crossreactive_cpgs()` (see `?get_crossreactive_cpgs` for details).
 
 # Querying and quantifying genome regions and functional groups
 
