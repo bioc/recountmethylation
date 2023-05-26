@@ -39,11 +39,18 @@ datasets.
 If you use `recountmethylation` in published work, please cite the following 
 paper:
 
+Sean K Maden and others, recountmethylation enables 
+flexible analysis of public blood DNA methylation array 
+data, Bioinformatics Advances, Volume 3, Issue 1, 
+2023, vbad020, https://doi.org/10.1093/bioadv/vbad020
+
 Sean K Maden, Reid F Thompson, Kasper D Hansen, 
 Abhinav Nellore, 'Human methylome variation across 
 Infinium 450K data on the Gene Expression Omnibus', 
 NAR Genomics and Bioinformatics, Volume 3, Issue 2, 
 June 2021, lqab025, https://doi.org/10.1093/nargab/lqab025
+
+Sean K Maden, 
 
 # Package disclaimer
 
