@@ -201,8 +201,8 @@ We can use this logic of the `UCSC_RefGene_Group` variable to build conditions
 for new functional regions of interest, namely promoter and gene body regions. 
 
 For promoters, we can use a common definition of a probe that maps to either the 
-`5'UTR` or either of the downstream (1500bp, `TSS1500`) or upstream (500bp, `TSS500`) 
-transcription start sites. We can make the new promoter variable using:
+`5'UTR`, `TSS1500`, or `TSS200` annotation labels. We can make the new promoter 
+variable using:
 
 ```{r}
 # make pattern: "(^|;)5'UTR($|;)|(^|;)TSS1500($|;)|(^|;)TSS500($|;)"
