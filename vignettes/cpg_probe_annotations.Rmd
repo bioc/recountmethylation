@@ -205,8 +205,8 @@ For promoters, we can use a common definition of a probe that maps to either the
 variable using:
 
 ```{r}
-# make pattern: "(^|;)5'UTR($|;)|(^|;)TSS1500($|;)|(^|;)TSS500($|;)"
-prom.catv <- c("5'UTR", "TSS1500", "TSS500")
+# make pattern: "(^|;)5'UTR($|;)|(^|;)TSS1500($|;)|(^|;)TSS200($|;)"
+prom.catv <- c("5'UTR", "TSS1500", "TSS200")
 prom.patt <- paste0("(^|;)", prom.catv, "($|;)", collapse = "|")
 # use regex to detect promoter-mapping probes
 man$promoter <- ifelse(grepl(prom.patt, man$UCSC_RefGene_Group),
